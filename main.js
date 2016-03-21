@@ -1,11 +1,12 @@
 var menubar = require('menubar');
 
 var mb = menubar({
-  index: 'http://localhost:3000',
-  preloadWindow: true,
-  width: 475,
-  height: 370,
-  icon: 'IconTemplate.png'
+  "index": 'https://usecamino.com',
+  "preloadWindow": true,
+  "width": 475,
+  "height": 370,
+  "icon": "icon.png",
+  "show-dock-icon": true
 });
 
 mb.on('ready', function ready () {

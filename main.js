@@ -1,43 +1,35 @@
-var app = require("app");
-var BrowserWindow = require("browser-window");
+var menubar = require('menubar');
+var electron = require('electron');
 var Menu = require("menu");
-var mainWindow = null;
 
-app.on("window-all-closed", function(){
-  app.quit();
+var mb = menubar({
+  "index": 'https://usecamino.com',
+  "preloadWindow": true,
+  "width": 475,
+  "height": 370,
+  "icon": "icon.png",
+  "show-dock-icon": false
 });
 
-app.on("ready", function () {
-  mainWindow = new BrowserWindow({
-      width: 475,
-      height: 370,
-      "min-width": 475,
-      "min-height": 370
-  });
-  mainWindow.loadUrl("https://usecamino.com");
-  mainWindow.on("closed", function () {
-      mainWindow =  null;
-  });
+mb.on('ready', function ready () {
+  console.log('app is running!');
+});
 
-  // Create the Application's main menu
-  var template = [{
-      label: "Application",
-      submenu: [
-          { label: "About Application", selector: "orderFrontStandardAboutPanel:" },
-          { type: "separator" },
-          { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
-      ]}, {
-      label: "Edit",
-      submenu: [
-          { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
-          { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
-          { type: "separator" },
-          { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
-          { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
-          { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
-          { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
-      ]}
+mb.on('after-create-window', function() {
+  // Add copy-paste, undo and quit keyboard shortcuts
+  var shortcuts = [{
+    label: "Shortcuts",
+    submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" },
+        { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+    ]}
   ];
 
-  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-});
+  Menu.setApplicationMenu(Menu.buildFromTemplate(shortcuts));
+})

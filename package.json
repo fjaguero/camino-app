@@ -11,7 +11,7 @@
   },
   "main": "main.js",
   "scripts": {
-    "build": "rm -rf ./Camino-darwin-x64 && electron-packager . Camino --platform=darwin --arch=x64 --version=0.37.5 --icon=Icon.icns",
+    "build": "rm -rf ./Camino-darwin-x64 && electron-packager . Camino --platform=darwin --arch=x64 --version=0.37.2 --icon=Icon.icns",
     "start": "electron main.js"
   }
 }

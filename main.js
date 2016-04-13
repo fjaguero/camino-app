@@ -1,6 +1,6 @@
-var menubar = require('menubar');
-var electron = require('electron');
-var Menu = require("menu");
+var app      = require('app');
+var menubar  = require('menubar');
+var Menu     = require("menu");
 
 var mb = menubar({
   "index": 'https://usecamino.com',
@@ -8,7 +8,7 @@ var mb = menubar({
   "width": 475,
   "height": 370,
   "icon": "icon.png",
-  "show-dock-icon": false
+  "showDockIcon": false
 });
 
 mb.on('ready', function ready () {

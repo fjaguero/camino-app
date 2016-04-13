@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Roadmap your life",
   "dependencies": {
-    "menubar": "4.0.2"
+    "menubar": "4.1.0"
   },
   "devDependencies": {
     "electron-packager": "5.2.1",

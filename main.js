@@ -7,8 +7,8 @@ var mb = menubar({
   "preloadWindow": true,
   "width": 475,
   "height": 370,
-  "icon": "icon.png",
-  "showDockIcon": false
+  "icon": 'public/menubar_icon.png',
+  "show-dock-icon": true
 });
 
 mb.on('ready', function ready () {
